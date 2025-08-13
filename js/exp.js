@@ -9,14 +9,12 @@ const exp = (function() {
     const difficultyDraw = Math.floor(Math.random() * 2)
 
     let settings = {
-        gameType: ['streak', 'bern'][Math.floor(Math.random() * 2)],
+        gameType: ['bern', 'strk'][Math.floor(Math.random() * 2)],
         difficulty: [['easy', 'hard'], ['hard', 'easy']][difficultyDraw],
         beforeAfter: [['after', 'before'], ['before', 'after']][difficultyDraw],
         targetLetter: [['i', 'g'], ['g', 'i']][difficultyDraw],
         moreOrLess: ['more', 'less'][difficultyDraw],
     };
-
-    console.log(settings.difficulty, settings.gameType);
 
     jsPsych.data.addProperties({
         gameType: settings.gameType,
@@ -49,7 +47,7 @@ const exp = (function() {
                 {
                     type: 'html',
                     prompt: `<p><strong>What makes some activities more immersive and engaging than others?</strong></p>
-                    <p>We're interested in why people feel effortlessly engaged in some activities (such as engrossing video games), but struggle to focus on other activities.</p>
+                    <p>We're interested in why people feel immersed and engaged in some activities (such as engrossing video games), but struggle to focus on other activities.</p>
                     <p>To help us, you'll play two rounds of a game called the <b>Tile Game</b>. After each round, you'll report how immersed and engaged you felt.</p>
                     <p>To learn about and play the Tile Game, continue to the next screen.</p></p>`
                 },
@@ -138,7 +136,7 @@ const exp = (function() {
             [
                 {
                     type: 'html',
-                    prompt: `<p>If you activate a tile, you'll see this message indicating that you earned 10 tokens.</p> 
+                    prompt: `<p>If you activate a tile, you'll see that you earned 10 tokens.</p> 
                     <div class="play-area-inst">               
                         <div class="win-text-inst" style="color:green">+10 Tokens</div>
                     </div>`,
@@ -147,7 +145,7 @@ const exp = (function() {
             [
                 {
                     type: 'html',
-                    prompt: `<p>If you fail to activate a tile, you'll see this message indicating that you earned 0 tokens.</p> 
+                    prompt: `<p>If you fail to activate a tile, you'll see that you earned 0 tokens.</p> 
                     <div class="play-area-inst">               
                         <div class="loss-text-inst">+0 Tokens</div>
                     </div>`,
@@ -238,7 +236,7 @@ const exp = (function() {
             [
                 {
                     type: 'html',
-                    prompt: `<p>For example, if you break a streak of three, you'll see this message indicating that you earned 30 tokens.</p> 
+                    prompt: `<p>For example, if you break a streak of three, you'll see that you earned 30 tokens.</p> 
                     <div class="play-area-inst">   
                         <div class="header-title" style="font-size:30px">Final Streak: 3</div>
                         <div class="win-text-inst" style="color:green">+30 Tokens</div>   
@@ -248,7 +246,7 @@ const exp = (function() {
             [
                 {
                     type: 'html',
-                    prompt: `<p>If you fail to activate a tile without having started a streak, you'll see this message indicating that you earned 0 tokens.</p> 
+                    prompt: `<p>If you fail to activate a tile without having started a streak, you'll see that you earned 0 tokens.</p> 
                     <div class="play-area-inst">   
                         <div class="header-title" style="font-size:30px">Final Streak: 0</div>
                         <div class="loss-text-inst">+0 Tokens</div>   
@@ -306,6 +304,107 @@ const exp = (function() {
         button_label_finish: 'Next'
     };
 
+    const howToEarn_invStrk = {
+        type: jsPsychSurvey,
+        pages: [
+            [
+                {
+                    type: 'html',
+                    prompt: `<p>In the Tile Game, players earn tokens by minimizing their streaks of consecutive misses: the fewer tiles you miss in a row, the more tokens you'll earn.</p>
+                    <p>Specifically, for each tile you activate, you earn 20 tokens minus 1 token for each consecutive miss.</p>
+                    <p>For example, if you activate a tile after 1 miss, you'll earn 19 tokens; if you activate a tile after 2 consecutive misses, you'll earn 18 tokens; if you activate a tile after 3 consecutive misses, you'll earn 17 tokens, and so on.</p>`,
+                },
+            ],
+            [
+                {
+                    type: 'html',
+                    prompt: `<p>Throughout the game, you'll see the length of your current streak at the top of the play area.
+                    For example, if you miss 3 tiles in a row, you'll see the following:</p> 
+                    <div class="play-area-inst">   
+                        <div class="header-title" style="font-size:30px">Current Streak: 3</div>    
+                    </div>`,
+                },
+            ],
+            [
+                {
+                    type: 'html',
+                    prompt: `<p>Each time you activate a tile, you'll see how many tokens you earned from your streak.</p> 
+                    <div class="play-area-inst">   
+                        <div class="header-title" style="font-size:30px">Current Streak: 3</div>  
+                    </div>`,
+                },
+            ],
+            [
+                {
+                    type: 'html',
+                    prompt: `<p>For example, if you break a streak of three, you'll see that you earned 17 tokens.</p> 
+                    <div class="play-area-inst">   
+                        <div class="header-title" style="font-size:30px">Final Streak: 3</div>
+                        <div class="win-text-inst" style="color:green">+17 Tokens</div>   
+                    </div>`,
+                },
+            ],
+            [
+                {
+                    type: 'html',
+                    prompt: `<p>If you activate a tile without any prior misses, you'll see that you earned 20 tokens.</p> 
+                    <div class="play-area-inst">   
+                        <div class="header-title" style="font-size:30px">Final Streak: 0</div>
+                        <div class="win-text-inst">+20 Tokens</div>   
+                    </div>`,
+                },
+            ],
+            [
+                {
+                    type: 'html',
+                    prompt: `<p>In addition to earning tokens through your performance, you'll sometimes gain (or lose) tokens randomly.
+                    Specifically, at the end of each streak, you have a 20% chance of winning 5 extra tokens, and a 20% chance of losing 5 tokens.</p>`,
+                },
+            ],
+            [
+                {
+                    type: 'html',
+                    prompt: `<p>If you see "+5 Bonus," this means you randomly won 5 extra tokens. For example, this is what you'd see if you randomly won 5 extra tokens after breaking a streak of three:</p>
+                    <div class="play-area-inst">   
+                        <div class="win-text-inst" style="color:green">+17 Tokens</div>
+                        <div class="plus-text-inst">+5 Bonus</div>
+                    </div>`,
+                },
+            ],
+            [
+                {
+                    type: 'html',
+                    prompt: `<p>This is what you'd see if you randomly won 5 extra tokens after a streak of zero:</p>
+                    <div class="play-area-inst">   
+                        <div class="win-text-inst">+20 Tokens</div>
+                        <div class="plus-text-inst">+5 Bonus</div>
+                    </div>`
+                },
+            ],
+            [
+                {
+                    type: 'html',
+                    prompt: `<p>If you see "-5 Loss," this means you randomly lost 5 tokens. For example, this is what you'd see if you randomly lost 5 tokens after breaking a streak of three:</p></p>
+                    <div class="play-area-inst">   
+                        <div class="win-text-inst" style="color:green">+17 Tokens</div>
+                        <div class="minus-text-inst">-5 Loss</div>
+                    </div>`,
+                },
+            ],
+            [
+                {
+                    type: 'html',
+                    prompt: `<p>This is what you'd see if you randomly lost 5 tokens after a streak of zero:</p></p>
+                    <div class="play-area-inst">   
+                        <div class="win-text-inst">+20 Tokens</div>
+                        <div class="minus-text-inst">-5 Loss</div>
+                    </div>`,
+                },
+            ],
+        ],
+        button_label_finish: 'Next'
+    };
+
     const intro_2 = {
         type: jsPsychSurvey,
         pages: [
@@ -339,14 +438,15 @@ const exp = (function() {
     function MakeAttnChk1(settings) {
 
 
-        let q2 = (settings.gameType == "streak") ? `How many tokens would you earn for a streak of 3?` : `How many tokens do you earn for activating a tile?`;
-        let q3 = (settings.gameType == "streak") ? `How many tokens would you earn for a streak of 0?` : `How many tokens do you earn for failing to activating a tile?`;
+        let q2 = (settings.gameType == "streak") ? `How many tokens do you earn for missing a tile after activating 5 in a row?` : `How many tokens do you earn for activating a tile after missing 5 in a row?`;
+        let q3 = (settings.gameType == "streak") ? `How many tokens do you earn for missing a tile after activating 0 in a row?` : `How many tokens do you earn for activating a tile after missing 0 in a row?`;
         let q4 = (settings.gameType == "streak") ? `After each streak, players have a 20% chance of winning 5 extra tokens and a 20% chance of losing 5 tokens.` : `After each round, players have a 20% chance of winning 5 extra tokens and a 20% chance of losing 5 tokens.`;
 
         let a1 = (settings.difficulty[0] == "hard") ? `s` : `u`;
-        let a2 = (settings.gameType == "streak") ? `30 tokens` : `10 tokens`;
+        let a2 = (settings.gameType == "streak") ? `50 tokens` : `17 tokens`;
+        let a3 = (settings.gameType == "streak") ? `0 tokens` : `20 tokens`;
 
-        let correctAnswers = [a1, a2, `0 tokens`, `true`];
+        let correctAnswers = [a1, a2, a3, `true`];
 
         let attnChk = {
             type: jsPsychSurveyMultiChoice,
@@ -362,12 +462,12 @@ const exp = (function() {
                 {
                     prompt: `<div style='color: rgb(109, 112, 114)'>${q2}</div>`, 
                     name: `attnChk2`, 
-                    options: [`0 tokens`, `10 tokens`, `20 tokens`, `30 tokens`],
+                    options: [`0 tokens`, `15 tokens`, `20 tokens`, `50 tokens`],
                 },
                 {
                     prompt: `<div style='color: rgb(109, 112, 114)'>${q3}</div>`, 
                     name: `attnChk3`, 
-                    options: [`0 tokens`, `10 tokens`, `20 tokens`, `30 tokens`],
+                    options: [`0 tokens`, `15 tokens`, `20 tokens`, `50 tokens`],
                 },
                 {
                     prompt: `<div style='color: rgb(109, 112, 114)'>${q4}</div>`, 
@@ -403,7 +503,7 @@ const exp = (function() {
           },
         };
 
-        const inst = (settings.gameType == "streak") ? [intro_1, howToEarn_streak] : [intro_1, howToEarn_bern];
+        const inst = (settings.gameType == "streak") ? [intro_1, howToEarn_streak] : [intro_1, howToEarn_invStrk];
 
         const instLoop = {
           timeline: [...inst, attnChk, conditionalNode],
@@ -545,9 +645,8 @@ const exp = (function() {
         let finalStreak;
 
         // html
-        const headerViz = (gameType == 'bern' || isPractice) ? 'hidden' : 'visible';
-        const playArea = '<div class="play-area">' + `<div class="header-title" style="visibility:${headerViz}">Current Streak:</div>` + `<div class="header-number" style="visibility:${headerViz}">{headerNumber}</div>` + '{tileContent}' + '</div>';
-        const feedbackArea = `<div class="play-area"><div class="header-title" style="visibility:${headerViz}">Final Streak:</div><div class="header-number" style="visibility:${headerViz}">{headerNumber}</div>{token-text}{extra-text}</div>`;
+        const playArea = '<div class="play-area">' + `<div class="header-title">Current Streak:</div>` + `<div class="header-number">{headerNumber}</div>` + '{tileContent}' + '</div>';
+        const feedbackArea = `<div class="play-area"><div class="header-title">Final Streak:</div><div class="header-number">{headerNumber}</div>{token-text}{extra-text}</div>`;
         const winText = '<div class="win-text">+10 Tokens</div>';
         const lossText = '<div class="loss-text">+0 Tokens</div>';
         const plusText = '<div class="plus-text">+5 Bonus</div>';
@@ -589,7 +688,7 @@ const exp = (function() {
             },
             trial_duration: () => { 
                 let latency = latencyArray.pop();
-                let latency_adjustment = (settings.difficulty[round] == "easy") ? 1000 : 0;
+                let latency_adjustment = (settings.difficulty[round] == "easy") ? 500 : 0;
                 let latency_adjusted = latency + latency_adjustment;
                 return latency_adjusted;
             },
@@ -612,11 +711,20 @@ const exp = (function() {
             trial_duration: 1000,
             data: {phase: 'outcome', round: round + 1},
             on_finish: (data) => {
-                if (correct == 1) {
-                    streak++;
-                } else {
-                    finalStreak = streak;
-                    streak = 0;
+                if (gameType == 'bern') {
+                    if (correct == 0) {
+                        streak++;
+                    } else {
+                        finalStreak = streak;
+                        streak = 0;
+                    };
+                } else if (gameType == 'strk') {
+                    if (correct == 1) {
+                        streak++;
+                    } else {
+                        finalStreak = streak;
+                        streak = 0;
+                    };
                 };
 
                 data.trial_idx = trial;
@@ -634,6 +742,8 @@ const exp = (function() {
                         standardFeedback = winText.replace('+10 Tokens', `You won!`)
                     } else if (gameType == 'streak' && stimIdxArray.length == 0) {
                         standardFeedback = winText.replace('10', `${10 * finalStreak}`)
+                    } else if (gameType == 'bern') {
+                        standardFeedback = winText.replace('10', `${20 - finalStreak}`)
                     };
                 } else {
                     standardFeedback = lossText;
@@ -641,7 +751,9 @@ const exp = (function() {
                         standardFeedback = lossText.replace('+0 Tokens', `You lost!`)
                     } else if (gameType == "streak") {
                         standardFeedback = (finalStreak > 0) ? winText.replace('10', `${10 * finalStreak}`) : lossText;
-                    };                    
+                    } else if (gameType == 'bern' && stimIdxArray.length == 0) {
+                        standardFeedback = winText.replace('10', `${20 - finalStreak}`)
+                    };                 
                 };
 
                 if (!isPractice) {
@@ -652,17 +764,23 @@ const exp = (function() {
                 };
 
                 if (correct == 1) {
-                    if (isPractice || gameType == "bern") {
+                    if (isPractice) {
                         return feedbackArea.replace('{headerNumber}', `${streak}`).replace('{token-text}', standardFeedback).replace('{extra-text}', bonusFeedback);
-                    } else {
+                    } else if (gameType == "strk") {
                         if (stimIdxArray.length == 0) {
                             return feedbackArea.replace('{headerNumber}', `${finalStreak}`).replace('{token-text}', standardFeedback).replace('{extra-text}', bonusFeedback);
                         } else {
                             return playArea.replace('{headerNumber}', `<span style="color:green; font-weight:bold">${streak}</span>`).replace('{tileContent}', '');            
                         };
+                    } else if (gameType == "bern") {
+                        return feedbackArea.replace('{headerNumber}', `${finalStreak}`).replace('{token-text}', standardFeedback).replace('{extra-text}', bonusFeedback);
                     };
                 } else {
-                    return feedbackArea.replace('{headerTitle}', `Final Streak:`).replace('{headerNumber}', `${finalStreak}`).replace('{token-text}', standardFeedback).replace('{extra-text}', bonusFeedback);
+                    if (gameType == "bern") {
+                        return playArea.replace('{headerNumber}', `<span style="color:green; font-weight:bold">${streak}</span>`).replace('{tileContent}', '');            
+                    } else {
+                        return feedbackArea.replace('{headerTitle}', `Final Streak:`).replace('{headerNumber}', `${finalStreak}`).replace('{token-text}', standardFeedback).replace('{extra-text}', bonusFeedback);
+                    }
                 };
             },
             choices: "NO_KEYS",
@@ -840,6 +958,7 @@ const exp = (function() {
 
 
     // timeline: second wheel
+
     p.tileGame_timeline_1 = {
         timeline: [ attnChk1, tileGame_1, new MakeFlowQs(1), new MakeEnjoyQs(1), new MakeEffortQs(1)],
     };
@@ -972,7 +1091,7 @@ const exp = (function() {
     p.save_data = {
         type: jsPsychPipe,
         action: "save",
-        experiment_id: "mF9r2WCUBNyZ",
+        experiment_id: "snZ4vGCcll1z",
         filename: dmPsych.filename,
         data_string: ()=>jsPsych.data.get().csv()
     };
