@@ -741,7 +741,7 @@ const exp = (function() {
                     if (isPractice) {
                         standardFeedback = winText.replace('+10 Tokens', `You won!`)
                     } else if (gameType == 'streak' && stimIdxArray.length == 0) {
-                        standardFeedback = winText.replace('10', `${20 * finalStreak}`)
+                        standardFeedback = winText.replace('10', `${20 * streak}`)
                     } else if (gameType == 'bern') {
                         standardFeedback = winText.replace('10', `${21 - finalStreak}`)
                     };
@@ -752,7 +752,7 @@ const exp = (function() {
                     } else if (gameType == "streak") {
                         standardFeedback = (finalStreak > 0) ? winText.replace('10', `${20 * finalStreak}`) : lossText;
                     } else if (gameType == 'bern' && stimIdxArray.length == 0) {
-                        standardFeedback = winText.replace('10', `${21 - finalStreak}`)
+                        standardFeedback = winText.replace('10', `${21 - streak}`)
                     };                 
                 };
 
