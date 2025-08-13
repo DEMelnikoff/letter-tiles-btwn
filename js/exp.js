@@ -9,7 +9,7 @@ const exp = (function() {
     const difficultyDraw = Math.floor(Math.random() * 2)
 
     let settings = {
-        gameType: ['bern', 'strk'][Math.floor(Math.random() * 2)],
+        gameType: ['bern', 'streak'][Math.floor(Math.random() * 2)],
         difficulty: [['easy', 'hard'], ['hard', 'easy']][difficultyDraw],
         beforeAfter: [['after', 'before'], ['before', 'after']][difficultyDraw],
         targetLetter: [['i', 'g'], ['g', 'i']][difficultyDraw],
@@ -718,7 +718,7 @@ const exp = (function() {
                         finalStreak = streak;
                         streak = 0;
                     };
-                } else if (gameType == 'strk') {
+                } else if (gameType == 'streak') {
                     if (correct == 1) {
                         streak++;
                     } else {
@@ -766,7 +766,7 @@ const exp = (function() {
                 if (correct == 1) {
                     if (isPractice) {
                         return feedbackArea.replace('{headerNumber}', `${streak}`).replace('{token-text}', standardFeedback).replace('{extra-text}', bonusFeedback);
-                    } else if (gameType == "strk") {
+                    } else if (gameType == "streak") {
                         if (stimIdxArray.length == 0) {
                             return feedbackArea.replace('{headerNumber}', `${finalStreak}`).replace('{token-text}', standardFeedback).replace('{extra-text}', bonusFeedback);
                         } else {
