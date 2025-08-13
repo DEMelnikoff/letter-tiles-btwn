@@ -443,7 +443,7 @@ const exp = (function() {
         let q4 = (settings.gameType == "streak") ? `After each streak, players have a 20% chance of winning 5 extra tokens and a 20% chance of losing 5 tokens.` : `After each round, players have a 20% chance of winning 5 extra tokens and a 20% chance of losing 5 tokens.`;
 
         let a1 = (settings.difficulty[0] == "hard") ? `s` : `u`;
-        let a2 = (settings.gameType == "streak") ? `50 tokens` : `17 tokens`;
+        let a2 = (settings.gameType == "streak") ? `50 tokens` : `15 tokens`;
         let a3 = (settings.gameType == "streak") ? `0 tokens` : `20 tokens`;
 
         let correctAnswers = [a1, a2, a3, `true`];
