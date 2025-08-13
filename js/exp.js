@@ -210,8 +210,8 @@ const exp = (function() {
                 {
                     type: 'html',
                     prompt: `<p>In the Tile Game, players earn tokens for streaks of consecutive successes.</p>
-                    <p>Specifically, you'll earn 10 tokens for every consecutive tile you activate.</p>
-                    <p>For example, a streak of 2 is worth 20 tokens, a streak of 3 is worth 30 tokens, and so on.</p>`,
+                    <p>Specifically, you'll earn 20 tokens for every consecutive tile you activate.</p>
+                    <p>For example, a streak of 2 is worth 40 tokens, a streak of 3 is worth 60 tokens, and so on.</p>`,
                 },
             ],
             [
@@ -236,10 +236,10 @@ const exp = (function() {
             [
                 {
                     type: 'html',
-                    prompt: `<p>For example, if you break a streak of three, you'll see that you earned 30 tokens.</p> 
+                    prompt: `<p>For example, if you break a streak of three, you'll see that you earned 60 tokens.</p> 
                     <div class="play-area-inst">   
                         <div class="header-title" style="font-size:30px">Final Streak: 3</div>
-                        <div class="win-text-inst" style="color:green">+30 Tokens</div>   
+                        <div class="win-text-inst" style="color:green">+60 Tokens</div>   
                     </div>`,
                 },
             ],
@@ -265,7 +265,7 @@ const exp = (function() {
                     type: 'html',
                     prompt: `<p>If you see "+5 Bonus," this means you randomly won 5 extra tokens. For example, this is what you'd see if you randomly won 5 extra tokens after a streak of three:</p>
                     <div class="play-area-inst">   
-                        <div class="win-text-inst" style="color:green">+30 Tokens</div>
+                        <div class="win-text-inst" style="color:green">+60 Tokens</div>
                         <div class="plus-text-inst">+5 Bonus</div>
                     </div>`,
                 },
@@ -285,7 +285,7 @@ const exp = (function() {
                     type: 'html',
                     prompt: `<p>If you see "-5 Loss," this means you randomly lost 5 tokens. For example, this is what you'd see if you randomly lost 5 tokens after a streak of three:</p></p>
                     <div class="play-area-inst">   
-                        <div class="win-text-inst" style="color:green">+30 Tokens</div>
+                        <div class="win-text-inst" style="color:green">+60 Tokens</div>
                         <div class="minus-text-inst">-5 Loss</div>
                     </div>`,
                 },
@@ -311,8 +311,8 @@ const exp = (function() {
                 {
                     type: 'html',
                     prompt: `<p>In the Tile Game, players earn tokens by minimizing their streaks of consecutive misses: the fewer tiles you miss in a row, the more tokens you'll earn.</p>
-                    <p>Specifically, for each tile you activate, you earn 20 tokens minus 1 token for each consecutive miss.</p>
-                    <p>For example, if you activate a tile after 1 miss, you'll earn 19 tokens; if you activate a tile after 2 consecutive misses, you'll earn 18 tokens; if you activate a tile after 3 consecutive misses, you'll earn 17 tokens, and so on.</p>`,
+                    <p>Specifically, for each tile you activate, you earn 21 tokens minus 1 token for each consecutive miss.</p>
+                    <p>For example, if you activate a tile after 1 miss, you'll earn 20 tokens; if you activate a tile after 2 consecutive misses, you'll earn 19 tokens; if you activate a tile after 3 consecutive misses, you'll earn 18 tokens, and so on.</p>`,
                 },
             ],
             [
@@ -337,20 +337,20 @@ const exp = (function() {
             [
                 {
                     type: 'html',
-                    prompt: `<p>For example, if you break a streak of three, you'll see that you earned 17 tokens.</p> 
+                    prompt: `<p>For example, if you break a streak of three, you'll see that you earned 18 tokens.</p> 
                     <div class="play-area-inst">   
                         <div class="header-title" style="font-size:30px">Final Streak: 3</div>
-                        <div class="win-text-inst" style="color:green">+17 Tokens</div>   
+                        <div class="win-text-inst" style="color:green">+18 Tokens</div>   
                     </div>`,
                 },
             ],
             [
                 {
                     type: 'html',
-                    prompt: `<p>If you activate a tile without any prior misses, you'll see that you earned 20 tokens.</p> 
+                    prompt: `<p>If you activate a tile without any prior misses, you'll see that you earned 21 tokens.</p> 
                     <div class="play-area-inst">   
                         <div class="header-title" style="font-size:30px">Final Streak: 0</div>
-                        <div class="win-text-inst">+20 Tokens</div>   
+                        <div class="win-text-inst">+21 Tokens</div>   
                     </div>`,
                 },
             ],
@@ -366,7 +366,7 @@ const exp = (function() {
                     type: 'html',
                     prompt: `<p>If you see "+5 Bonus," this means you randomly won 5 extra tokens. For example, this is what you'd see if you randomly won 5 extra tokens after breaking a streak of three:</p>
                     <div class="play-area-inst">   
-                        <div class="win-text-inst" style="color:green">+17 Tokens</div>
+                        <div class="win-text-inst" style="color:green">+18 Tokens</div>
                         <div class="plus-text-inst">+5 Bonus</div>
                     </div>`,
                 },
@@ -376,7 +376,7 @@ const exp = (function() {
                     type: 'html',
                     prompt: `<p>This is what you'd see if you randomly won 5 extra tokens after a streak of zero:</p>
                     <div class="play-area-inst">   
-                        <div class="win-text-inst">+20 Tokens</div>
+                        <div class="win-text-inst">+21 Tokens</div>
                         <div class="plus-text-inst">+5 Bonus</div>
                     </div>`
                 },
@@ -386,7 +386,7 @@ const exp = (function() {
                     type: 'html',
                     prompt: `<p>If you see "-5 Loss," this means you randomly lost 5 tokens. For example, this is what you'd see if you randomly lost 5 tokens after breaking a streak of three:</p></p>
                     <div class="play-area-inst">   
-                        <div class="win-text-inst" style="color:green">+17 Tokens</div>
+                        <div class="win-text-inst" style="color:green">+18 Tokens</div>
                         <div class="minus-text-inst">-5 Loss</div>
                     </div>`,
                 },
@@ -396,7 +396,7 @@ const exp = (function() {
                     type: 'html',
                     prompt: `<p>This is what you'd see if you randomly lost 5 tokens after a streak of zero:</p></p>
                     <div class="play-area-inst">   
-                        <div class="win-text-inst">+20 Tokens</div>
+                        <div class="win-text-inst">+21 Tokens</div>
                         <div class="minus-text-inst">-5 Loss</div>
                     </div>`,
                 },
@@ -438,13 +438,13 @@ const exp = (function() {
     function MakeAttnChk1(settings) {
 
 
-        let q2 = (settings.gameType == "streak") ? `How many tokens do you earn for missing a tile after activating 5 in a row?` : `How many tokens do you earn for activating a tile after missing 5 in a row?`;
+        let q2 = (settings.gameType == "streak") ? `How many tokens do you earn for missing a tile after activating 6 in a row?` : `How many tokens do you earn for activating a tile after missing 6 in a row?`;
         let q3 = (settings.gameType == "streak") ? `How many tokens do you earn for missing a tile after activating 0 in a row?` : `How many tokens do you earn for activating a tile after missing 0 in a row?`;
         let q4 = (settings.gameType == "streak") ? `After each streak, players have a 20% chance of winning 5 extra tokens and a 20% chance of losing 5 tokens.` : `After each round, players have a 20% chance of winning 5 extra tokens and a 20% chance of losing 5 tokens.`;
 
         let a1 = (settings.difficulty[0] == "hard") ? `s` : `u`;
-        let a2 = (settings.gameType == "streak") ? `50 tokens` : `15 tokens`;
-        let a3 = (settings.gameType == "streak") ? `0 tokens` : `20 tokens`;
+        let a2 = (settings.gameType == "streak") ? `120 tokens` : `15 tokens`;
+        let a3 = (settings.gameType == "streak") ? `0 tokens` : `21 tokens`;
 
         let correctAnswers = [a1, a2, a3, `true`];
 
@@ -462,12 +462,12 @@ const exp = (function() {
                 {
                     prompt: `<div style='color: rgb(109, 112, 114)'>${q2}</div>`, 
                     name: `attnChk2`, 
-                    options: [`0 tokens`, `15 tokens`, `20 tokens`, `50 tokens`],
+                    options: [`0 tokens`, `15 tokens`, `21 tokens`, `120 tokens`],
                 },
                 {
                     prompt: `<div style='color: rgb(109, 112, 114)'>${q3}</div>`, 
                     name: `attnChk3`, 
-                    options: [`0 tokens`, `15 tokens`, `20 tokens`, `50 tokens`],
+                    options: [`0 tokens`, `15 tokens`, `21 tokens`, `120 tokens`],
                 },
                 {
                     prompt: `<div style='color: rgb(109, 112, 114)'>${q4}</div>`, 
@@ -741,18 +741,18 @@ const exp = (function() {
                     if (isPractice) {
                         standardFeedback = winText.replace('+10 Tokens', `You won!`)
                     } else if (gameType == 'streak' && stimIdxArray.length == 0) {
-                        standardFeedback = winText.replace('10', `${10 * finalStreak}`)
+                        standardFeedback = winText.replace('10', `${20 * finalStreak}`)
                     } else if (gameType == 'bern') {
-                        standardFeedback = winText.replace('10', `${20 - finalStreak}`)
+                        standardFeedback = winText.replace('10', `${21 - finalStreak}`)
                     };
                 } else {
                     standardFeedback = lossText;
                     if (isPractice) {
                         standardFeedback = lossText.replace('+0 Tokens', `You lost!`)
                     } else if (gameType == "streak") {
-                        standardFeedback = (finalStreak > 0) ? winText.replace('10', `${10 * finalStreak}`) : lossText;
+                        standardFeedback = (finalStreak > 0) ? winText.replace('10', `${20 * finalStreak}`) : lossText;
                     } else if (gameType == 'bern' && stimIdxArray.length == 0) {
-                        standardFeedback = winText.replace('10', `${20 - finalStreak}`)
+                        standardFeedback = winText.replace('10', `${21 - finalStreak}`)
                     };                 
                 };
 
