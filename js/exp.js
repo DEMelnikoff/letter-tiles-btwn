@@ -768,7 +768,7 @@ const exp = (function() {
                         return feedbackArea.replace('{headerNumber}', `${streak}`).replace('{token-text}', standardFeedback).replace('{extra-text}', bonusFeedback);
                     } else if (gameType == "streak") {
                         if (stimIdxArray.length == 0) {
-                            return feedbackArea.replace('{headerNumber}', `${finalStreak}`).replace('{token-text}', standardFeedback).replace('{extra-text}', bonusFeedback);
+                            return feedbackArea.replace('{headerNumber}', `${streak}`).replace('{token-text}', standardFeedback).replace('{extra-text}', bonusFeedback);
                         } else {
                             return playArea.replace('{headerNumber}', `<span style="color:green; font-weight:bold">${streak}</span>`).replace('{tileContent}', '');            
                         };
@@ -777,9 +777,13 @@ const exp = (function() {
                     };
                 } else {
                     if (gameType == "bern") {
-                        return playArea.replace('{headerNumber}', `<span style="color:green; font-weight:bold">${streak}</span>`).replace('{tileContent}', '');            
-                    } else {
-                        return feedbackArea.replace('{headerTitle}', `Final Streak:`).replace('{headerNumber}', `${finalStreak}`).replace('{token-text}', standardFeedback).replace('{extra-text}', bonusFeedback);
+                        if (stimIdxArray.length == 0) {
+                            return feedbackArea.replace('{headerNumber}', `${streak}`).replace('{token-text}', standardFeedback).replace('{extra-text}', bonusFeedback);
+                        } else {
+                            return playArea.replace('{headerNumber}', `<span style="color:green; font-weight:bold">${streak}</span>`).replace('{tileContent}', ''); 
+                        }         
+                    } else if (gameType == "streak") {
+                        return feedbackArea.replace('{headerNumber}', `${finalStreak}`).replace('{token-text}', standardFeedback).replace('{extra-text}', bonusFeedback);
                     }
                 };
             },
